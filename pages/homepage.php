@@ -1,51 +1,40 @@
-<!doctype html>
-
-<html lang="en">
+<html>
 <head>
-    <meta charset="utf-8">
-
-    <title>The HTML5 Herald</title>
-    <meta name="description" content="The HTML5 Herald">
-    <meta name="author" content="SitePoint">
-
-    <link rel="stylesheet" href="css/styles.css?v=1.0">
-
-    <!--[if lt IE 9]>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
-    <![endif]-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
+    <link rel="stylesheet" href="pages/assets/css/style.css">
 </head>
 
 <body>
-
-
-<h1>
-    <?php
-
-    //this how to print some data;
-    echo $data['site_name'];
-
-    ?> </h1>
-
-<h1><a href="index.php?page=accounts&action=all">Show All Accounts</a></h1>
-<h1><a href="index.php?page=tasks&action=all">Show All Tasks</a></h1>
-
-<form action="index.php?page=accounts&action=login" method="POST">
-
-    <div class="container">
-        <label><b>Username</b></label>
-        <input type="text" placeholder="Enter Username" name="email" required>
-
-        <label><b>Password</b></label>
-        <input type="password" placeholder="Enter Password" name="password" required>
-
-        <button type="submit">Login</button>
+<div class="login-page">
+    <h1><a href="index.php?page=accounts&action=all">Show All Accounts</a></h1>
+    <h1><a href="index.php?page=tasks&action=all">Show All Tasks</a></h1>
+    <div class="form">
+        <form action="index.php?page=accounts&action=register" class="register-form">
+            <input type="text" placeholder="First name" name="fname"/>
+            <input type="text" placeholder="last name" name="lname"/>
+            <input type="text" placeholder="Email" name="email"/>
+            <input type="text" placeholder="Phone" name="phone"/>
+            <input type="text" placeholder="Birthday" name="birthday"/>
+            <input type="text" placeholder="Gender" name="gender"/>
+            <input type="password" placeholder="password" name="password"/>
+            <button>create</button>
+            <p class="message">Already registered? <a href="#">Sign In</a></p>
+        </form>
+        <form action="index.php?page=accounts&action=login" class="login-form">
+            <input type="text" placeholder="email"/>
+            <input type="password" placeholder="password"/>
+            <button>login</button>
+            <p class="message">Not registered? <a href="#">Create an account</a></p>
+        </form>
     </div>
+</div>
 
 
-</form>
-<h1><a href="index.php?page=accounts&action=register">Register</a></h1>
+
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 
-<script src="js/scripts.js"></script>
+<script src="pages/assets/js/script.js"></script>
+
 </body>
 </html>
