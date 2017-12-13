@@ -55,7 +55,9 @@ class tasksController extends http\controller
     //this is the function to view edit record form
     public static function edit()
     {
-        $record = todos::findOne($_SESSION['userID']);
+
+        session_start();
+        $record = todos::findTasksbyID($_SESSION['userID']);
 
         self::getTemplate('edit_task', $record);
 
@@ -77,8 +79,10 @@ class tasksController extends http\controller
         session_start();
         $task = new todo();
 
-        $task->body = $_POST['body'];
-        $task->ownerid = $_SESSION['userID'];
+        $task->owenremail = $_POST['owneremail'];
+        $task->ownerid = $_POST['userID'];
+        $task->createdate = $_POST['createdate'];
+
         $task->save();
 
     }
@@ -90,6 +94,19 @@ class tasksController extends http\controller
         $record = todos::findOne($_REQUEST['id']);
         $record->delete();
         print_r($_POST);
+
+    }
+    public static function button()
+    {
+
+        if($_POST['btSubmit']=="Edit")
+        {
+            self::edit();
+        }
+        elseif ($_POST['btSubmit']=="Delete")
+        {
+            self::delete();
+        }
 
     }
 
