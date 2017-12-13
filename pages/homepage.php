@@ -9,7 +9,7 @@
     <h1><a href="index.php?page=accounts&action=all">Show All Accounts</a></h1>
     <h1><a href="index.php?page=tasks&action=all">Show All Tasks</a></h1>
     <div class="form">
-        <form action="index.php?page=accounts&action=register" class="register-form">
+        <form action="index.php?page=accounts&action=register" method="post" class="register-form">
             <input type="text" placeholder="First name" name="fname"/>
             <input type="text" placeholder="last name" name="lname"/>
             <input type="text" placeholder="Email" name="email"/>
@@ -20,7 +20,7 @@
             <button>create</button>
             <p class="message">Already registered? <a href="#">Sign In</a></p>
         </form>
-        <form action="index.php?page=accounts&action=login" class="login-form">
+        <form action="index.php?page=accounts&action=login" method="post" class="login-form">
             <input type="text" placeholder="email"/>
             <input type="password" placeholder="password"/>
             <button>login</button>
