@@ -130,11 +130,18 @@ class accountsController extends http\controller
 
                 echo 'login';
 
+                session_destroy();
+
                 session_start();
                 $_SESSION["userID"] = $user->id;
 
+                header("Location: index.php?page=todos&action=show");
+
+
+
+
                 //forward the user to the show all todos page
-                
+
             } else {
                 echo 'password does not match';
             }
