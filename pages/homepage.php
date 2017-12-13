@@ -21,8 +21,8 @@
             <p class="message">Already registered? <a href="#">Sign In</a></p>
         </form>
         <form action="index.php?page=accounts&action=login" method="post" class="login-form">
-            <input type="text" placeholder="email"/>
-            <input type="password" placeholder="password"/>
+            <input type="text" placeholder="email" name="email"/>
+            <input type="password" placeholder="password" name="password"/>
             <button>login</button>
             <p class="message">Not registered? <a href="#">Create an account</a></p>
         </form>
