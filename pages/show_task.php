@@ -20,13 +20,20 @@
 <?php
 //this is how you print something  $data contains the record that was selected on the table.
 
-print_r($data);
+$array = get_object_vars($data[0]);
+
+//print_r($array);
 ?>
-<form action="index.php?page=tasks&action=delete&id=<?php echo $data->id; ?> " method="post" id="form1">
-    <button type="submit" form="form1" value="delete">Delete</button>
+
+<form action="index.php?page=tasks&action=button" method="post">
+    Owner Email <input type="text" name="owneremail" value="<?php echo $array['ownerid']?>" readonly><br>
+    Create Date: <input type="text" name="createddate" value="<?php echo $array['createddate']?>" readonly><br>
+    Due Date: <input type="text" name="duedate" value="<?php echo $array['duedate']?>" readonly><br>
+    Message: <input type="text" name="message" value="<?php echo $array['message']?>" readonly><br>
+    Is Done?: <input type="text" name="isdone" value="<?php echo $array['isdone']?>" readonly><br>
+    <input type="submit" name="btSubmit" value="Edit">
+    <input type="submit" name="btSubmit" value="Delete">
 </form>
-
-
 
 
 <script src="js/scripts.js"></script>
