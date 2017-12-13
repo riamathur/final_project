@@ -162,6 +162,14 @@ class routes
         $route->method = 'show';
         $routes[] = $route;
 
+        $route = new route();
+        $route->http_method = 'POST';
+        $route->action = 'button';
+        $route->page = 'todos';
+        $route->controller = 'tasksController';
+        $route->method = 'button';
+        $routes[] = $route;
+
 
         return $routes;
     }
