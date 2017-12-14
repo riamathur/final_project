@@ -81,7 +81,10 @@ class tasksController extends http\controller
 
         $task->owenremail = $_POST['owneremail'];
         $task->ownerid = $_POST['userID'];
-        $task->createdate = $_POST['createdate'];
+        $task->createddate = $_POST['createddate'];
+        $task->duedate = $_POST['duedate'];
+        $task->message = $_POST['message'];
+        $task->isdone = $_POST['isdone'];
 
         $task->save();
 
