@@ -27,7 +27,9 @@ class tasksController extends http\controller
 
     public static function all()
     {
-        $records = todos::findAll();
+        session_start();
+        $records = todos::findTasksbyID($_SESSION['userID']);
+
         /*session_start();
            if(key_exists('userID',$_SESSION)) {
                $userID = $_SESSION['userID'];
@@ -39,7 +41,9 @@ class tasksController extends http\controller
 
         $records = todos::findTasksbyID($userID);
         */
-        self::getTemplate('all_tasks', $records);
+
+        $records ?  self::getTemplate('all_tasks', $records) : self::getTemplate('create_task');
+
 
     }
     //to call the show function the url is called with a post to: index.php?page=task&action=create
@@ -66,27 +70,34 @@ class tasksController extends http\controller
     //this would be for the post for sending the task edit form
     public static function store()
     {
+        session_start();
+        $task = new todo();
+        $task->id = $_SESSION['userID'];
+        $task->owneremail = $_SESSION['email'];
+        $task->ownerid = $_SESSION['userID'];
+        $task->createddate = $_POST['createddate'];
+        $task->duedate = $_POST['duedate'];
+        $task->message = $_POST['message'];
+        $task->isdone = $_POST['isdone'];
+        $task->save();
 
+      //  print_r($task);
 
-        $record = todos::findOne($_REQUEST['id']);
-        $record->body = $_REQUEST['body'];
-        $record->save();
-        print_r($_POST);
-
+         header("Location: index.php?page=todos&action=all");
     }
 
     public static function save() {
         session_start();
         $task = new todo();
-
-        $task->owenremail = $_POST['owneremail'];
-        $task->ownerid = $_POST['userID'];
+        $task->owneremail = $_SESSION['email'];
+        $task->ownerid = $_SESSION['userID'];
         $task->createddate = $_POST['createddate'];
         $task->duedate = $_POST['duedate'];
         $task->message = $_POST['message'];
         $task->isdone = $_POST['isdone'];
 
         $task->save();
+        header("Location: index.php?page=todos&action=all");
 
     }
 
@@ -94,9 +105,9 @@ class tasksController extends http\controller
     //One form is the todo and the other is just for the delete button
     public static function delete()
     {
-        $record = todos::findOne($_REQUEST['id']);
+        $record = todos::findOne($_SESSION['id']);
         $record->delete();
-        print_r($_POST);
+
 
     }
     public static function button()
