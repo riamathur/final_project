@@ -134,8 +134,9 @@ class accountsController extends http\controller
 
                 session_start();
                 $_SESSION["userID"] = $user->id;
+                $_SESSION["email"] = $_POST['email'];
 
-                header("Location: index.php?page=todos&action=show");
+                header("Location: index.php?page=todos&action=all");
 
 
 
