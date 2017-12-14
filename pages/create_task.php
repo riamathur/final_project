@@ -1,8 +1,6 @@
-<html>
-<head></head>
-<body>
+<?php include 'header.php' ?>
 
-
+    <h1>Create Task</h1>
 
 <form action="index.php?page=tasks&action=save" method="post">
 
@@ -14,6 +12,4 @@
 </form>
 
 
-
-</body>
-</html>
+<?php include 'footer.php' ?>

@@ -1,6 +1,6 @@
-<html>
-<head></head>
-<body>
+<?php include 'header.php' ?>
+
+<h1>Edit Task</h1>
 
 <?php $array = get_object_vars($data[0]);?>
 
@@ -14,6 +14,4 @@
 </form>
 
 
-
-</body>
-</html>
+<?php include 'footer.php' ?>
