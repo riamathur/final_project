@@ -26,7 +26,7 @@ $array = get_object_vars($data[0]);
 ?>
 
 <form action="index.php?page=todos&action=button" method="post">
-    Owner Email <input type="text" name="owneremail" value="<?php echo $array['owneremail']?>" readonly><br>
+
     Create Date: <input type="text" name="createddate" value="<?php echo $array['createddate']?>" readonly><br>
     Due Date: <input type="text" name="duedate" value="<?php echo $array['duedate']?>" readonly><br>
     Message: <input type="text" name="message" value="<?php echo $array['message']?>" readonly><br>
