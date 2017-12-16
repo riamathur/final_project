@@ -53,7 +53,7 @@ class tasksController extends http\controller
 
     public static function create()
     {
-        print_r($_POST);
+        self::getTemplate('create_task');
     }
 
     //this is the function to view edit record form
@@ -81,7 +81,7 @@ class tasksController extends http\controller
         $task->isdone = $_POST['isdone'];
         $task->save();
 
-      //  print_r($task);
+       // print_r($task);
 
          header("Location: index.php?page=todos&action=all");
     }
@@ -95,6 +95,8 @@ class tasksController extends http\controller
         $task->duedate = $_POST['duedate'];
         $task->message = $_POST['message'];
         $task->isdone = $_POST['isdone'];
+
+
 
         $task->save();
         header("Location: index.php?page=todos&action=all");
