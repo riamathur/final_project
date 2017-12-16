@@ -14,7 +14,7 @@ $array = get_object_vars($data[0]);
 
     Create Date: <input type="text" name="createddate" value="<?php echo $array['createddate']?>" readonly><br>
     Due Date: <input type="text" name="duedate" value="<?php echo $array['duedate']?>" readonly><br>
-    Message: <input type="text" name="message" value="<?php echo $array['message']?>" readonly><br>
+    Message:<textarea rows="4" cols="50" name="message"  form="usrform"><?php echo $array['message']?></textarea><br>
     Is Done?: <input type="text" name="isdone" value="<?php echo $array['isdone']?>" readonly><br>
     <input type="submit" name="btSubmit" value="Edit">
     <input type="submit" name="btSubmit" value="Delete">
