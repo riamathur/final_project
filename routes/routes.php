@@ -42,6 +42,14 @@ class routes
         $route->method = 'create';
         $routes[] = $route;
 
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'create';
+        $route->page = 'tasks';
+        $route->controller = 'tasksController';
+        $route->method = 'create';
+        $routes[] = $route;
+
         //This is an examole of the post for tasks to show a task
         //GET METHOD index.php?page=tasks&action=show
         $route = new route();
@@ -184,6 +192,14 @@ class routes
         $route->page = 'tasks';
         $route->controller = 'tasksController';
         $route->method = 'save';
+        $routes[] = $route;
+
+        $route = new route();
+        $route->http_method = 'GET';
+        $route->action = 'logout';
+        $route->page = 'homepage';
+        $route->controller = 'homepageController';
+        $route->method = 'logout';
         $routes[] = $route;
 
 
