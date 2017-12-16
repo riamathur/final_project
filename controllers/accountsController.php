@@ -23,9 +23,13 @@ class accountsController extends http\controller
 
     public static function all()
     {
+            session_start();
 
-        $records = accounts::findAll();
-        self::getTemplate('all_accounts', $records);
+       $records = accounts::findOne($_SESSION['userID']);
+
+    //   print_r($records);
+
+      self::getTemplate('show_account', $records);
 
     }
     //to call the show function the url is called with a post to: index.php?page=task&action=create
@@ -66,7 +70,7 @@ class accountsController extends http\controller
             //you may want to send the person to a
             // login page or create a session and log them in
             // and then send them to the task list page and a link to create tasks
-            header("Location: index.php?page=accounts&action=all");
+            header("Location: index.php?page=todos&action=all");
 
         } else {
             //You can make a template for errors called error.php
@@ -90,6 +94,8 @@ class accountsController extends http\controller
     public static function save() {
         $user = accounts::findOne($_REQUEST['id']);
 
+
+        $user->id = $_REQUEST['id'];
         $user->email = $_POST['email'];
         $user->fname = $_POST['fname'];
         $user->lname = $_POST['lname'];
@@ -97,7 +103,7 @@ class accountsController extends http\controller
         $user->birthday = $_POST['birthday'];
         $user->gender = $_POST['gender'];
         $user->save();
-        header("Location: index.php?page=accounts&action=all");
+        header("Location: index.php?page=todos&action=all");
 
     }
 
