@@ -20,6 +20,7 @@ abstract class model
 
             $sql = $this->update();
 
+
         } else {
 
             $sql = $this->insert();
@@ -44,7 +45,6 @@ abstract class model
             $this->id = $db->lastInsertId();
 
         }
-
 
         return $this->id;
         }
@@ -76,13 +76,20 @@ abstract class model
         $tableName = $modelName::getTablename();
         $array = get_object_vars($this);
 
+
+
         $comma = " ";
         $sql = 'UPDATE ' . $tableName . ' SET ';
         foreach ($array as $key => $value) {
-            if (!empty($value)) {
+
+          //  print_r($key);
+           // print_r($value);
+         //   if (!empty($value)) {
+              //  print $sql;
                 $sql .= $comma . $key . ' = "' . $value . '"';
                 $comma = ", ";
-            }
+              //  print $sql;
+          //  }
         }
         $sql .= ' WHERE id=' . $this->id;
         return $sql;
