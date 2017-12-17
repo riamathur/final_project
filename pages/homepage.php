@@ -2,12 +2,22 @@
 <head>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
     <link rel="stylesheet" href="pages/assets/css/style.css">
+
+    <style>
+
+        body
+        {
+            background-color: aquamarine;
+        }
+
+    </style>
+
+
 </head>
 
 <body>
 <div class="login-page">
-    <h1><a href="index.php?page=accounts&action=all">Show All Accounts</a></h1>
-    <h1><a href="index.php?page=tasks&action=all">Show All Tasks</a></h1>
+   <h1>To Do Application </h1>
     <div class="form">
         <form action="index.php?page=accounts&action=register" method="post" class="register-form">
             <input type="text" placeholder="First name" name="fname"/>
