@@ -15,10 +15,10 @@ class tasksController extends http\controller
     public static function show()
     {
         session_start();
-        $record = todos::findTasksbyID($_SESSION['userID']);
+        $record = todos::findOne($_REQUEST['id']);
 
 
-      //  print_r($_SESSION['userID']);
+
 
        self::getTemplate('show_task', $record);
     }
@@ -57,11 +57,11 @@ class tasksController extends http\controller
     }
 
     //this is the function to view edit record form
-    public static function edit()
+    public static function edit($id)
     {
 
         session_start();
-        $record = todos::findTasksbyID($_SESSION['userID']);
+        $record = todos::findOne($id);
 
         self::getTemplate('edit_task', $record);
 
@@ -72,16 +72,17 @@ class tasksController extends http\controller
     {
         session_start();
         $task = new todo();
-        $task->id = $_SESSION['userID'];
+        $task->id = $_REQUEST['id'];
         $task->owneremail = $_SESSION['email'];
         $task->ownerid = $_SESSION['userID'];
         $task->createddate = $_POST['createddate'];
         $task->duedate = $_POST['duedate'];
         $task->message = $_POST['message'];
         $task->isdone = $_POST['isdone'];
-        $task->save();
 
-       // print_r($task);
+          $task->save();
+
+
 
          header("Location: index.php?page=todos&action=all");
     }
@@ -107,8 +108,9 @@ class tasksController extends http\controller
     //One form is the todo and the other is just for the delete button
     public static function delete()
     {
-        $record = todos::findOne($_SESSION['id']);
+        $record = todos::findOne($_REQUEST['id']);
         $record->delete();
+        header("Location: index.php?page=todos&action=all");
 
 
     }
@@ -117,11 +119,11 @@ class tasksController extends http\controller
 
         if($_POST['btSubmit']=="Edit")
         {
-            self::edit();
+            self::edit($_REQUEST['id']);
         }
         elseif ($_POST['btSubmit']=="Delete")
         {
-            self::delete();
+            self::delete($_REQUEST['id']);
         }
 
     }
